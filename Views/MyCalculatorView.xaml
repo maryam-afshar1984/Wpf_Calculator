@@ -1,0 +1,36 @@
+﻿<Window x:Class="Wpf_Calculator.Views.MyCalculatorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Calculator.Views"
+        mc:Ignorable="d"
+           Title="My Calcolator" Height="460" Width="320" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border BorderThickness="5" BorderBrush="Black" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="77.188"/>
+            <ColumnDefinition Width="202.812"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="Title" FontSize="20" FontStyle="Italic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"></Label>
+        <TextBox Name="FirstNumber" FontSize="20" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Margin="26,40,174,0" Width="80" Height="34" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Name="SecoundNumber" FontSize="20" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"  Height="34" Width="80" Margin="0,40,35,0" HorizontalAlignment="Right"></TextBox>
+
+        <Label Name="Result" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="0,117,0,88" Grid.RowSpan="2" Grid.ColumnSpan="2"></Label>
+        <Button x:Name="Click_Sum" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="1" Margin="10,62,17,-12">+</Button>
+        <Button Name="Click_Subtraction" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="2,62,151,-12" >-</Button>
+        <Button Name="Click_Multiplication" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="70,62,83,-12"  >*</Button>
+        <Button Name="Click_Division" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="138,62,15,-12"  >/</Button>
+        <Button Name="Clear" FontSize="10" Background="Beige" Height="30" Grid.Row="2" Grid.Column="1" RenderTransformOrigin="-0.403,2.562" Margin="56,123,83,-63" Grid.ColumnSpan="2">Cleare</Button>
+    </Grid>
+    </Border>
+</Window>
