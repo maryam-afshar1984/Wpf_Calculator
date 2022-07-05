@@ -67,6 +67,13 @@ namespace Wpf_Calculator.ViewModels
             }
         }
 
+        //for IOC
+        private IMathCalculator _mathCalculator;
+        public MyCalculatorViewModel(IMathCalculator mathCalculator)
+        {
+            _mathCalculator = mathCalculator;
+        }
+        
         public void Click_Sum(string firstNumber, string secoundNumber)
         {
 
@@ -115,6 +122,7 @@ namespace Wpf_Calculator.ViewModels
                 return false;
             }
         }
+
         public void Clear(string firstNumber, string secoundNumber, string result)
         {
            bool flag = CanClear(firstNumber, secoundNumber, result);

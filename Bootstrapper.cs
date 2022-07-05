@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Wpf_Calculator.Models;
 using Wpf_Calculator.ViewModels;
 using Wpf_Calculator.Views;
 
@@ -22,6 +23,9 @@ namespace Wpf_Calculator
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
+
+            _container.
+                PerRequest<IMathCalculator, CalculatorModel>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
