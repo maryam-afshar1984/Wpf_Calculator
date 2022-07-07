@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -8,10 +9,16 @@ using System.Windows;
 
 namespace Wpf_Calculator
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Log.Logger = new LoggerConfiguration()
+                   .MinimumLevel.Debug()
+                   .WriteTo.Console()
+                   .WriteTo.File("F:\\Wpf\\Source\\Wpf_Calculator\\logs\\Log_Serilog.txt", rollingInterval: RollingInterval.Day)
+                   .CreateLogger();
+            Serilog.Log.Information("Hello, This is my log for MyCalcolatur App!");
+        }
     }
 }

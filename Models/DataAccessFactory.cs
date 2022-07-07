@@ -8,9 +8,9 @@ namespace Wpf_Calculator.Models
 {
     public class DataAccessFactory
     {
-        public static CalculatorModel GetCalculatorModel()
+        public static MyCalculatorModel GetCalculatorModel()
         {
-            return new CalculatorModel();
+            return new MyCalculatorModel();
         }
     }
 }

@@ -26,11 +26,11 @@
         <TextBox Name="SecoundNumber" FontSize="20" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"  Height="34" Width="80" Margin="0,40,35,0" HorizontalAlignment="Right"></TextBox>
 
         <Label Name="Result" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="0,117,0,88" Grid.RowSpan="2" Grid.ColumnSpan="2"></Label>
-        <Button x:Name="Click_Sum" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="1" Margin="10,62,17,-12">+</Button>
-        <Button Name="Click_Subtraction" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="2,62,151,-12" >-</Button>
-        <Button Name="Click_Multiplication" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="70,62,83,-12"  >*</Button>
-        <Button Name="Click_Division" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="138,62,15,-12"  >/</Button>
-        <Button Name="Clear" FontSize="10" Background="Beige" Height="30" Grid.Row="2" Grid.Column="1" RenderTransformOrigin="-0.403,2.562" Margin="56,123,83,-63" Grid.ColumnSpan="2">Cleare</Button>
+            <Button x:Name="Sum_Click" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="1" Margin="10,62,17,-12">+</Button>
+            <Button Name="Subtraction_Click" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="2,62,151,-12" >-</Button>
+            <Button Name="Multiplication_Click" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="70,62,83,-12"  >*</Button>
+            <Button Name="Division_Click" FontSize="10" Background="Beige" Width="50" Height="50" Grid.Row="2" Grid.Column="2" Margin="138,62,15,-12"  >/</Button>
+            <Button Name="Clear_Click" FontSize="10" Background="Beige" Height="30" Grid.Row="2" Grid.Column="1" RenderTransformOrigin="-0.403,2.562" Margin="56,123,83,-63" Grid.ColumnSpan="2">Cleare</Button>
     </Grid>
     </Border>
 </Window>

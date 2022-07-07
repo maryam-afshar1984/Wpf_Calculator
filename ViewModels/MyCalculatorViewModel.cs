@@ -1,4 +1,6 @@
 ﻿using Caliburn.Micro;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +15,8 @@ namespace Wpf_Calculator.ViewModels
 {
     public class MyCalculatorViewModel:Screen
     {
-      
-        double total;
 
+        double total;
         private string _title = "WPF Calculator App";
         public string Title
         {
@@ -67,45 +68,78 @@ namespace Wpf_Calculator.ViewModels
             }
         }
 
+
         //for IOC
         private IMathCalculator _mathCalculator;
         public MyCalculatorViewModel(IMathCalculator mathCalculator)
         {
             _mathCalculator = mathCalculator;
         }
-        
-        public void Click_Sum(string firstNumber, string secoundNumber)
-        {
 
-            CalculatorModel calculators = new CalculatorModel();
-            total = calculators.Sum(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+        //Events and methods
+        public void Sum_Click(string firstNumber, string secoundNumber)
+        {
+            try
+            {
+                MyCalculatorModel calculators = new MyCalculatorModel();
+                total = calculators.Sum(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+                Serilog.Log.Debug("Sum {A} and {B}", firstNumber, secoundNumber);
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "Something went wrong during Sum_Click event!");
+            }
 
             Result = total.ToString();
             total = 0;
         }
 
-        public void Click_Subtraction(string firstNumber, string secoundNumber)
+        public void Subtraction_Click(string firstNumber, string secoundNumber)
         {
-            CalculatorModel calculators = new CalculatorModel();
-            total = calculators.Subtract(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber)); ;
+            try
+            {
+                MyCalculatorModel calculators = new MyCalculatorModel();
+                total = calculators.Subtract(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+                Serilog.Log.Debug("Subtract {A} from {B}", secoundNumber, firstNumber);
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "Something went wrong during Subtraction_Click event!");
+            }
 
             Result = total.ToString();
             total = 0;
         }
 
-        public void Click_Multiplication(string firstNumber, string secoundNumber)
+        public void Multiplication_Click(string firstNumber, string secoundNumber)
         {
-            CalculatorModel calculators = new CalculatorModel();
-            total = calculators.Multiply(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+            try
+            {
+                MyCalculatorModel calculators = new MyCalculatorModel();
+                total = calculators.Multiply(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+                Serilog.Log.Debug("Multiply {A} to {B}", firstNumber, secoundNumber);
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "Something went wrong during Multiplication_Click event!");
+            }
 
             Result = total.ToString();
             total = 0;
         }
 
-        public void Click_Division(string firstNumber, string secoundNumber)
+        public void Division_Click(string firstNumber, string secoundNumber)
         {
-            CalculatorModel calculators = new CalculatorModel();
-            total = calculators.Divide(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+            try
+            {
+                MyCalculatorModel calculators = new MyCalculatorModel();
+                total = calculators.Divide(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
+                Serilog.Log.Debug("Divide {A} by {B}", firstNumber, secoundNumber);
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "Something went wrong during Division_Click event!");
+            }
 
             Result = total.ToString();
             total = 0;
@@ -123,9 +157,11 @@ namespace Wpf_Calculator.ViewModels
             }
         }
 
-        public void Clear(string firstNumber, string secoundNumber, string result)
+        public void Clear_Click(string firstNumber, string secoundNumber, string result)
         {
-           bool flag = CanClear(firstNumber, secoundNumber, result);
+            try
+            {
+                bool flag = CanClear(firstNumber, secoundNumber, result);
 
                 YesNoDialogBox msgbox = new YesNoDialogBox("Are you sure?");
                 if ((bool)msgbox.ShowDialog() && flag)
@@ -134,11 +170,19 @@ namespace Wpf_Calculator.ViewModels
                     SecoundNumber = "00";
                     Result = "Result";
                     MessageBox.Show("They have been cleared!");
+                    Serilog.Log.Information("All previous numbers and result have been cleared!");
                 }
-                else 
+                else
                 {
                     MessageBox.Show("You can continue with previous numbers!");
+                    Serilog.Log.Information("User is continuing with previous numbers!");
                 }
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "Something went wrong during clear numbers and result method!");
+            }
+           
         }
     }
 }

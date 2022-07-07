@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
+using Microsoft.Extensions.Logging;
 using System;
+using Serilog;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,7 @@ namespace Wpf_Calculator
         //IOC. It is going to handle the instaces of all classes
         private SimpleContainer _container = new SimpleContainer();
 
+        //IOC container configuration
         protected override void Configure()
         {
             _container.Instance(_container);
@@ -25,7 +28,7 @@ namespace Wpf_Calculator
                 .Singleton<IEventAggregator, EventAggregator>();
 
             _container.
-                PerRequest<IMathCalculator, CalculatorModel>();
+                PerRequest<IMathCalculator, MyCalculatorModel>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
@@ -34,16 +37,15 @@ namespace Wpf_Calculator
                 .ForEach(viewModelType => _container.RegisterPerRequest(
                     viewModelType, viewModelType.ToString(), viewModelType));
         }
+
         public Bootstrapper()
         {
             Initialize();
         }
-        protected override void OnStartup(object sender, StartupEventArgs e)
-        {
-            DisplayRootViewForAsync<MyCalculatorViewModel>();
-        }
 
-        //IOC
+       
+        //IOC override methods
+        #region IOC override methods
         protected override object GetInstance(Type serviceType, string key)
         {
             return _container.GetInstance(serviceType, key);
@@ -58,6 +60,12 @@ namespace Wpf_Calculator
         {
             _container.BuildUp(instance);
         }
-        //IOC
+        #endregion /IOC override methods
+
+        protected override void OnStartup(object sender, StartupEventArgs e)
+        {
+            DisplayRootViewForAsync<MyCalculatorViewModel>();
+        }
+
     }
 }
