@@ -38,6 +38,7 @@ namespace Wpf_Calculator
                     viewModelType, viewModelType.ToString(), viewModelType));
         }
 
+        //constructor method for using Caliburn.Micro 
         public Bootstrapper()
         {
             Initialize();
@@ -62,6 +63,7 @@ namespace Wpf_Calculator
         }
         #endregion /IOC override methods
 
+        //override OnStartup method for using Caliburn.Micro 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
             DisplayRootViewForAsync<MyCalculatorViewModel>();
