@@ -13,10 +13,11 @@ namespace Wpf_Calculator
     {
         public App()
         {
-            Log.Logger = new LoggerConfiguration()
+            Serilog.Log.Logger = new Serilog.LoggerConfiguration()
                    .MinimumLevel.Debug()
                    .WriteTo.Console()
-                   .WriteTo.File("F:\\Wpf\\Source\\Wpf_Calculator\\logs\\Log_Serilog.txt", rollingInterval: RollingInterval.Day)
+                   .WriteTo.File("F:\\Wpf\\Source\\Wpf_Calculator\\logs\\Log_Serilog.txt"
+                   , rollingInterval: RollingInterval.Day)
                    .CreateLogger();
             Serilog.Log.Information("Hello, This is my log for MyCalcolatur App!");
         }
