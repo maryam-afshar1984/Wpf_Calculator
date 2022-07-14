@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" Background="Transparent">
    
-        <Border BorderThickness="5" BorderBrush="Black" 
+    <Border BorderThickness="5" BorderBrush="Black" 
     CornerRadius="20" Background="BlanchedAlmond">
             <Grid>
                 <Grid.RowDefinitions>
@@ -40,7 +40,9 @@
                     VerticalAlignment="Top" Width="55" 
                     Click="No_Click" IsCancel="True"/>
                     </StackPanel>
+                    
                 </Viewbox>
+                
             </Grid>
         </Border>
 </Window>

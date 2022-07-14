@@ -15,8 +15,12 @@ namespace Wpf_Calculator.ViewModels
 {
     public class MyCalculatorViewModel:Screen
     {
-
+        //Variables
         double total;
+
+
+        //All properties refer to MyCalculatorView.xaml
+        #region properties refer to MyCalculatorView
         private string _title = "WPF Calculator App";
         public string Title
         {
@@ -26,7 +30,7 @@ namespace Wpf_Calculator.ViewModels
             }
         }
 
-        private string _firstnumber="00";
+        private string _firstnumber = "00";
         public string FirstNumber
         {
             get
@@ -40,7 +44,7 @@ namespace Wpf_Calculator.ViewModels
             }
         }
 
-        private string _secondnumber="00";
+        private string _secondnumber = "00";
         public string SecoundNumber
         {
             get
@@ -50,7 +54,7 @@ namespace Wpf_Calculator.ViewModels
             set
             {
                 _secondnumber = value;
-                 NotifyOfPropertyChange(() => SecoundNumber);
+                NotifyOfPropertyChange(() => SecoundNumber);
             }
         }
 
@@ -68,19 +72,24 @@ namespace Wpf_Calculator.ViewModels
             }
         }
 
+        #endregion /properties refer to MyCalculatorView
 
-        //for IOC
+
+        //Constructor Injection (IoC)
         private IMathCalculator _mathCalculator;
         public MyCalculatorViewModel(IMathCalculator mathCalculator)
         {
             _mathCalculator = mathCalculator;
         }
 
+
         //Events and methods
+        #region Click events for buttons and CanClear method
         public void Sum_Click(string firstNumber, string secoundNumber)
         {
             try
             {
+
                 MyCalculatorModel calculators = new MyCalculatorModel();
                 total = calculators.Sum(Convert.ToDouble(firstNumber), Convert.ToDouble(secoundNumber));
                 Serilog.Log.Debug("Sum {A} and {B}", firstNumber, secoundNumber);
@@ -147,7 +156,7 @@ namespace Wpf_Calculator.ViewModels
 
         public bool CanClear(string firstNumber, string secoundNumber, string result)
         {
-            if (!string.IsNullOrWhiteSpace(firstNumber) || !string.IsNullOrWhiteSpace(secoundNumber) || ! string.IsNullOrWhiteSpace(result))
+            if (!string.IsNullOrWhiteSpace(firstNumber) || !string.IsNullOrWhiteSpace(secoundNumber) || !string.IsNullOrWhiteSpace(result))
             {
                 return true;
             }
@@ -163,6 +172,7 @@ namespace Wpf_Calculator.ViewModels
             {
                 bool flag = CanClear(firstNumber, secoundNumber, result);
 
+                //showing DialogBOx
                 YesNoDialogBox msgbox = new YesNoDialogBox("Are you sure?");
                 if ((bool)msgbox.ShowDialog() && flag)
                 {
@@ -182,7 +192,9 @@ namespace Wpf_Calculator.ViewModels
             {
                 Serilog.Log.Error(ex, "Something went wrong during clear numbers and result method!");
             }
-           
+
         }
+        #endregion /Click events for buttons and CanClear method
+
     }
 }

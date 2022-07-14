@@ -15,10 +15,11 @@ namespace Wpf_Calculator
 {
     public class Bootstrapper : BootstrapperBase
     {
-        //IOC. It is going to handle the instaces of all classes
+        // It is going to handle the instaces of all classes (IoC)
         private SimpleContainer _container = new SimpleContainer();
 
-        //IOC container configuration
+
+        //IoC container configuration
         protected override void Configure()
         {
             _container.Instance(_container);
@@ -38,6 +39,7 @@ namespace Wpf_Calculator
                     viewModelType, viewModelType.ToString(), viewModelType));
         }
 
+
         //constructor method for using Caliburn.Micro 
         public Bootstrapper()
         {
@@ -45,8 +47,8 @@ namespace Wpf_Calculator
         }
 
        
-        //IOC override methods
-        #region IOC override methods
+        //IoC override methods
+        #region IoC override methods
         protected override object GetInstance(Type serviceType, string key)
         {
             return _container.GetInstance(serviceType, key);
@@ -61,7 +63,8 @@ namespace Wpf_Calculator
         {
             _container.BuildUp(instance);
         }
-        #endregion /IOC override methods
+        #endregion /IoC override methods
+
 
         //override OnStartup method for using Caliburn.Micro 
         protected override void OnStartup(object sender, StartupEventArgs e)

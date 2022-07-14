@@ -13,6 +13,7 @@ namespace Wpf_Calculator
     {
         public App()
         {
+            //Configuration a Serilog
             Serilog.Log.Logger = new Serilog.LoggerConfiguration()
                    .MinimumLevel.Debug()
                    .WriteTo.Console()

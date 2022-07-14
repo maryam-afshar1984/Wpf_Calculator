@@ -180,7 +180,6 @@
       <DependentUpon>YesNoDialogBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MyCalculatorModel.cs" />
-    <Compile Include="Models\DataAccessFactory.cs" />
     <Compile Include="Models\IMathCalculator.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModels\MyCalculatorViewModel.cs" />
